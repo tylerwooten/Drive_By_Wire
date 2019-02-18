@@ -10,7 +10,7 @@ bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 #notifier = can.Notifier(bus, [can.Printer()])
 
-msg = can.Message(arbitration_id=100, data=bytearray([1, 0, 5, 0, 0, 0, 0, 0]), extended_id=False)
+msg = can.Message(arbitration_id=100, data=[1, 0, 5, 0, 0, 0, 0, 0], extended_id=False)
 
 print(msg)
 bus.send(msg)

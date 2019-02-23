@@ -1,5 +1,9 @@
 import can
 from can import Message
+import pygame
+import os
+
+
 
 #os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
 
@@ -10,11 +14,21 @@ bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 
 
-test2 = Message(arbitration_id= 419365113, data=[0, 0, 0, 0, 0, 0, 0, 0])
-print(test2)
-print(test2.data)
+left = Message(arbitration_id= 419365113, data=[4, 0, 0, 0, 0, 1, 0, 0])
+right = Message(arbitration_id= 419365113, data=[4, 0, 0, 0, 0, 0, 0, 0])
+print(left)
+print(right)
 
-bus.send(test2)
+while True:
+    ...
+    pressed = pygame.key.get_pressed()
+    if pressed[pygame.K_a]:
+       bus.send(left)
+
+    if pressed[pygame.K_d]:
+        bus.send(right)
+
+#bus.send(test2)
 
 #while True:
 #    message = str(bus.recv())

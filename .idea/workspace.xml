@@ -12,15 +12,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/DriveByWire$Steering.coverage" NAME="Steering Coverage Results" MODIFIED="1550263793400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DriveByWire$Steering.coverage" NAME="Steering Coverage Results" MODIFIED="1550858557387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Steering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+            <state relative-caret-position="335">
+              <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -126,6 +126,8 @@
       <workItem from="1549828479509" duration="527000" />
       <workItem from="1550255330565" duration="418000" />
       <workItem from="1550256265311" duration="6240000" />
+      <workItem from="1550508094069" duration="441000" />
+      <workItem from="1550855917109" duration="1523000" />
     </task>
     <task id="LOCAL-00001" summary="Clearing the test notes">
       <created>1550255379083</created>
@@ -141,22 +143,36 @@
       <option name="project" value="LOCAL" />
       <updated>1550263884252</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Trying to get the message to send">
+      <created>1550508118394</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550508118394</updated>
+    </task>
+    <task id="LOCAL-00004" summary="howdy">
+      <created>1550508188476</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550508188476</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8746000" />
+    <option name="totallyTimeSpent" value="10710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27382874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4983845" weight="0.3273906" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4983845" visible="true" weight="0.3273906" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -167,7 +183,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5016155" side_tool="true" weight="0.3273906" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49919224" weight="0.32901135" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919224" weight="0.32901135" />
-      <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.4983845" visible="true" weight="0.3273906" />
+      <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.4983845" weight="0.3273906" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -181,13 +197,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Clearing the test notes" />
     <MESSAGE value="Trying to get the message to send" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to get the message to send" />
+    <MESSAGE value="howdy" />
+    <option name="LAST_COMMIT_MESSAGE" value="howdy" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Steering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+        <state relative-caret-position="335">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

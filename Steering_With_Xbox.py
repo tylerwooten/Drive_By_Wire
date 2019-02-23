@@ -27,7 +27,7 @@ class TextPrint:
         self.reset()
         self.font = pygame.font.Font(None, 20)
 
-    def print(self, screen, textString):
+    def printtext(self, screen, textString):
         textBitmap = self.font.render(textString, True, BLACK)
         screen.blit(textBitmap, [self.x, self.y])
         self.y += self.line_height
@@ -72,9 +72,9 @@ while done == False:
 
         # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
         if event.type == pygame.JOYBUTTONDOWN:
-            print("Joystick button pressed.")
+            printtext("Joystick button pressed.")
         if event.type == pygame.JOYBUTTONUP:
-            print("Joystick button released.")
+            printtext("Joystick button released.")
 
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
@@ -85,7 +85,7 @@ while done == False:
     # Get count of joysticks
     joystick_count = pygame.joystick.get_count()
 
-    textPrint.print(screen, "Number of joysticks: {}".format(joystick_count))
+    textPrint.printtext(screen, "Number of joysticks: {}".format(joystick_count))
     textPrint.indent()
 
     # For each joystick:
@@ -93,22 +93,22 @@ while done == False:
         joystick = pygame.joystick.Joystick(i)
         joystick.init()
 
-        textPrint.print(screen, "Joystick {}".format(i))
+        textPrint.printtext(screen, "Joystick {}".format(i))
         textPrint.indent()
 
         # Get the name from the OS for the controller/joystick
         name = joystick.get_name()
-        textPrint.print(screen, "Joystick name: {}".format(name))
+        textPrint.printtext(screen, "Joystick name: {}".format(name))
 
         # Usually axis run in pairs, up/down for one, and left/right for
         # the other.
         axes = joystick.get_numaxes()
-        textPrint.print(screen, "Number of axes: {}".format(axes))
+        textPrint.printtext(screen, "Number of axes: {}".format(axes))
         textPrint.indent()
 
         for i in range(axes):
             axis = joystick.get_axis(i)
-            textPrint.print(screen, "Axis {} value: {:>6.3f}".format(i, axis))
+            textPrint.printtext(screen, "Axis {} value: {:>6.3f}".format(i, axis))
         textPrint.unindent()
 
         ################ ----------------So begins my choppy code--------------------- ######################
@@ -120,33 +120,33 @@ while done == False:
         # Stops turning section
         if -0.15 < axis0 < 0.15:
             bus.send(StopAll)
-            print("not moving\n")
+            #print("not moving\n")
 
         # Turning right section
         if 0.15 < axis0 < 0.3:
             bus.send(Right1)
-            print("Right 1\n")
+            #print("Right 1\n")
 
         if 0.3 < axis0 < 0.6:
             bus.send(Right2)
-            print("Right 2\n")
+            #print("Right 2\n")
 
         if 0.6 < axis0 <= 1.00:
             bus.send(Right3)
-            print("Right 3\n")
+            #print("Right 3\n")
 
         # Turning Left section
         if -0.15 > axis0 > -0.3:
             bus.send(Left1)
-            print("Left 1\n")
+            #print("Left 1\n")
 
         if -0.3 > axis0 > -0.6:
             bus.send(Left2)
-            print("Left 2\n")
+            #print("Left 2\n")
 
         if -0.6 > axis0 >= -1.00:
             bus.send(Left3)
-            print("Left 3\n")
+            #print("Left 3\n")
 
         ############### ADD IN SENDING CAN SIGNAL HERE
 

@@ -170,44 +170,56 @@ while done == False:
         axis0 = joystick.get_axis(0) # Left knob, left (-1) and right (1)
         axis1 = joystick.get_axis(1) # Left knob, up (-1) and down (1)
         axis2 = joystick.get_axis(2) # Triggers, Left (1) Right (-1)
-        # RECOMMEND: Knob movements don't do anything from -0.15 to 0.15 because it is never really 0
+
+        mode = 1
 
         # Stops turning section
         if -0.15 < axis0 < 0.15:
             bus.send(StopAll)
             print("not moving\n")
 
+        else:
+            #recommend adding on a limit multiplier/divider of axis 0 so we can expand or contract the max/min turn amount
+            message_send = command_encoder('18FF00F9', '05ff', axis0, mode)  # axis 0 updated -1 to 1 and changes the position. mode is the speed mode and can be updated by pressing the buttons
+            bus.send(message_send)
+
         # Turning right section
-        if 0.15 < axis0 < 0.3:
-            message_send = command_encoder('18FF00F9', '05ff', 0.5, 2)
-            bus.send(message_send)
-            print("Right 1\n")
-
-        if 0.3 < axis0 < 0.6:
-            message_send = command_encoder('18FF00F9', '05ff', 0.5, 5)
-            bus.send(message_send)
-            print("Right 2\n")
-
-        if 0.6 < axis0 <= 1.00:
-            message_send = command_encoder('18FF00F9', '05ff', 0.5, 10)
-            bus.send(message_send)
-            print("Right 3\n")
-
-        # Turning Left section
-        if -0.15 > axis0 > -0.3:
-            message_send = command_encoder('18FF00F9', '05ff', -0.5, 2)
-            bus.send(message_send)
-            print("Left 1\n")
-
-        if -0.3 > axis0 > -0.6:
-            message_send = command_encoder('18FF00F9', '05ff', -0.5, 5)
-            bus.send(message_send)
-            print("Left 2\n")
-
-        if -0.6 > axis0 >= -1.00:
-            message_send = command_encoder('18FF00F9', '05ff', -0.5, 10)
-            bus.send(message_send)
-            print("Left 3\n")
+        # if 0.15 < axis0 < 0.3:
+        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 2)
+        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 19, 0])
+        #     bus.send(message_send)
+        #     print("Right 1\n")
+        #
+        # if 0.3 < axis0 < 0.6:
+        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 5)
+        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 80, 0])
+        #     bus.send(message_send)
+        #     print("Right 2\n")
+        #
+        # if 0.6 < axis0 <= 1.00:
+        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 10)
+        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 0, 1])
+        #     bus.send(message_send)
+        #     print("Right 3\n")
+        #
+        # # Turning Left section
+        # if -0.15 > axis0 > -0.3:
+        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 2)
+        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 252, 255, 19, 0])
+        #     bus.send(message_send)
+        #     print("Left 1\n")
+        #
+        # if -0.3 > axis0 > -0.6:
+        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 5)
+        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 252, 255, 80, 0])
+        #     bus.send(message_send)
+        #     print("Left 2\n")
+        #
+        # if -0.6 > axis0 >= -1.00:
+        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 10)
+        #     message_send = Message(arbitration_id= 419365113, data=[5, 255, 0, 0, 252, 255, 0, 1])
+        #     bus.send(message_send)
+        #     print("Left 3\n")
 
         ############### ADD IN SENDING CAN SIGNAL HERE
 

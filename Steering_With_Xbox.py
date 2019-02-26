@@ -1,14 +1,15 @@
 import pygame
 import can
 from can import Message
+import os
 
 #os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
 bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 #Define all messages to be sent
-Left1 = Message(arbitration_id= 419365113, data=[3, FF, FF, FF, FF, 1, 0, 0])
-Left2 = Message(arbitration_id= 419365113, data=[3, FF, FF, FF, FF, 3, 0, 0])
-Left3 = Message(arbitration_id= 419365113, data=[3, FF, FF, FF, FF, 5, 0, 0])
+Left1 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 241, 0, 0])
+Left2 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 243, 0, 0])
+Left3 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 245, 0, 0])
 Right1 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 1, 0, 0])
 Right2 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 3, 0, 0])
 Right3 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 5, 0, 0])

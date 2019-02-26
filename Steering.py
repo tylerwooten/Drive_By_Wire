@@ -9,6 +9,7 @@ bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 
 
+
 test2 = Message(arbitration_id= 419365113, data=[0, 0, 0, 0, 0, 0, 0, 0])
 print(test2)
 print(test2.data)

@@ -179,6 +179,7 @@ while done == False:
             print("not moving\n")
 
         else:
+            #recommend adding on a limit multiplier/divider of axis 0 so we can expand or contract the max/min turn amount
             message_send = command_encoder('18FF00F9', '05ff', axis0, mode)  # axis 0 updated -1 to 1 and changes the position. mode is the speed mode and can be updated by pressing the buttons
             bus.send(message_send)
 

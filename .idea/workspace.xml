@@ -28,8 +28,8 @@
       <file leaf-file-name="Steering_With_Xbox.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Steering_With_Xbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="74" column="31" selection-start-line="74" selection-end-line="75" />
+            <state relative-caret-position="377">
+              <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -71,8 +71,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1128" />
-    <option name="y" value="28" />
+    <option name="x" value="166" />
+    <option name="y" value="76" />
     <option name="width" value="1280" />
     <option name="height" value="1576" />
   </component>
@@ -197,12 +197,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5016155" side_tool="true" weight="0.3273906" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.4983845" visible="true" weight="0.32729626" />
+      <window_info active="true" anchor="bottom" id="File Transfer" order="13" sideWeight="0.4983845" visible="true" weight="0.32729626" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919224" weight="0.32901135" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4983845" weight="0.3273906" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49919224" weight="0.32901135" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12509145" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12509145" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -334,8 +334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Steering_With_Xbox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="74" column="31" selection-start-line="74" selection-end-line="75" />
+        <state relative-caret-position="377">
+          <caret line="190" column="9" lean-forward="true" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="9" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

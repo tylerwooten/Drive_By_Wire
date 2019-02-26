@@ -120,33 +120,33 @@ while done == False:
         # Stops turning section
         if -0.15 < axis0 < 0.15:
             bus.send(StopAll)
-            #print("not moving\n")
+            print("not moving\n")
 
         # Turning right section
         if 0.15 < axis0 < 0.3:
             bus.send(Right1)
-            #print("Right 1\n")
+            print("Right 1\n")
 
         if 0.3 < axis0 < 0.6:
             bus.send(Right2)
-            #print("Right 2\n")
+            print("Right 2\n")
 
         if 0.6 < axis0 <= 1.00:
             bus.send(Right3)
-            #print("Right 3\n")
+            print("Right 3\n")
 
         # Turning Left section
         if -0.15 > axis0 > -0.3:
             bus.send(Left1)
-            #print("Left 1\n")
+            print("Left 1\n")
 
         if -0.3 > axis0 > -0.6:
             bus.send(Left2)
-            #print("Left 2\n")
+            print("Left 2\n")
 
         if -0.6 > axis0 >= -1.00:
             bus.send(Left3)
-            #print("Left 3\n")
+            print("Left 3\n")
 
         ############### ADD IN SENDING CAN SIGNAL HERE
 

@@ -7,12 +7,12 @@ import os
 bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 #Define all messages to be sent
-Left1 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 241, 0, 0])
-Left2 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 243, 0, 0])
-Left3 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 245, 0, 0])
-Right1 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 1, 0, 0])
-Right2 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 3, 0, 0])
-Right3 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 5, 0, 0])
+#Left1 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 241, 0, 0])
+#Left2 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 243, 0, 0])
+#Left3 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 245, 0, 0])
+#Right1 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 1, 0, 0])
+#Right2 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 3, 0, 0])
+#Right3 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 5, 0, 0])
 StopAll = Message(arbitration_id= 419365113, data=[0, 0, 0, 0, 0, 0, 0, 0])
 
 # Define some colors
@@ -23,6 +23,60 @@ WHITE = (255, 255, 255)
 # This is a simple class that will help us print to the screen
 # It has nothing to do with the joysticks, just outputting the
 # information.
+
+#------------------------------- START COMMAND ENCODER FUNCTION ----------------------------------------#
+
+def command_encoder(identifier, type, position, speed):
+    # example command to run: command_encoder('18FF00F9', '05ff', 0.29, 0.6), 0.29 rev at 0.6 speed
+
+    # IQ20 conversion
+    convert_position = float(position * 2 ** 20)
+    convert_speed = float(speed * 2 ** 8)
+
+    # Initializing number of bits for each variable
+    position_bits = 32
+    speed_bits = 16
+
+    # Conversion of position to hex
+    hex_position = hex((int(convert_position) + (1 << position_bits)) % (1 << position_bits))
+    while len(hex_position) < 10:
+        hex_position = str(hex_position)
+        hex_position = hex_position[:2] + '0' + hex_position[2:]
+
+    #print('Position: ', hex_position)
+
+    # Conversion of speed to hex
+    hex_speed = hex((int(convert_speed) + (1 << speed_bits)) % (1 << speed_bits))
+    while len(hex_speed) < 6:
+        hex_speed = str(hex_speed)
+        hex_speed = hex_speed[:2] + '0' + hex_speed[2:]
+
+    #print('Speed: ', hex_speed)
+
+    n = 2
+
+    hex_position = (str(hex_position[2:]))
+    holder_position = [hex_position[i:i + n] for i in range(0, len(hex_position), n)]
+    #print('check:', holder_position)
+
+
+    hex_speed = (str(hex_speed[2:]))
+    holder_speed = [hex_speed[i:i+n] for i in range(0, len(hex_speed), n)]
+    #print('check:', holder_speed)
+
+
+    identifier = [identifier, '#', type]
+
+    command = holder_position[::-1] + holder_speed[::-1]
+    final_command = ''.join(command)
+    holder_command = [final_command[i:i + n] for i in range(0, len(final_command), n)]  #reformatted to data input for this script
+    #print(holder_command)
+
+    message_send = Message(arbitration_id= 419365113, data= holder_command)
+    return message_send
+
+#-----------------------------------START XBOX CONTROLLER SECTION -----------------------------------------------#
+
 class TextPrint:
     def __init__(self):
         self.reset()
@@ -125,28 +179,34 @@ while done == False:
 
         # Turning right section
         if 0.15 < axis0 < 0.3:
-            bus.send(Right1)
+            message_send = command_encoder('18FF00F9', '05ff', 0.5, 2)
+            bus.send(message_send)
             print("Right 1\n")
 
         if 0.3 < axis0 < 0.6:
-            bus.send(Right2)
+            message_send = command_encoder('18FF00F9', '05ff', 0.5, 5)
+            bus.send(message_send)
             print("Right 2\n")
 
         if 0.6 < axis0 <= 1.00:
-            bus.send(Right3)
+            message_send = command_encoder('18FF00F9', '05ff', 0.5, 10)
+            bus.send(message_send)
             print("Right 3\n")
 
         # Turning Left section
         if -0.15 > axis0 > -0.3:
-            bus.send(Left1)
+            message_send = command_encoder('18FF00F9', '05ff', -0.5, 2)
+            bus.send(message_send)
             print("Left 1\n")
 
         if -0.3 > axis0 > -0.6:
-            bus.send(Left2)
+            message_send = command_encoder('18FF00F9', '05ff', -0.5, 5)
+            bus.send(message_send)
             print("Left 2\n")
 
         if -0.6 > axis0 >= -1.00:
-            bus.send(Left3)
+            message_send = command_encoder('18FF00F9', '05ff', -0.5, 10)
+            bus.send(message_send)
             print("Left 3\n")
 
         ############### ADD IN SENDING CAN SIGNAL HERE

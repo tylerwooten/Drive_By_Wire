@@ -26,7 +26,7 @@ WHITE = (255, 255, 255)
 
 #------------------------------- START COMMAND ENCODER FUNCTION ----------------------------------------#
 
-def command_encoder(identifier, type, position, speed):
+def command_encoder(position, speed):
     # example command to run: command_encoder('18FF00F9', '05ff', 0.29, 0.6), 0.29 rev at 0.6 speed
 
     # IQ20 conversion
@@ -76,7 +76,10 @@ def command_encoder(identifier, type, position, speed):
         item = int(item, 16)
         final_command.append(item)
 
-    message_send = Message(arbitration_id= 419365113, data = final_command)
+    temp_list = [5, 255]
+    temp_list.extend(final_command)
+
+    message_send = Message(arbitration_id=419365113, data=temp_list)
     return message_send
 
 #-----------------------------------START XBOX CONTROLLER SECTION -----------------------------------------------#
@@ -131,9 +134,9 @@ while done == False:
 
         # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
         if event.type == pygame.JOYBUTTONDOWN:
-            printtext("Joystick button pressed.")
+            print("Joystick button pressed.")
         if event.type == pygame.JOYBUTTONUP:
-            printtext("Joystick button released.")
+            print("Joystick button released.")
 
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
@@ -170,12 +173,51 @@ while done == False:
             textPrint.printtext(screen, "Axis {} value: {:>6.3f}".format(i, axis))
         textPrint.unindent()
 
+        # ----------- BUTTON SECTION ---------- #
+        buttons = joystick.get_numbuttons()
+        textPrint.printtext(screen, "Number of buttons: {}".format(buttons))
+        textPrint.indent()
+
+        for i in range(buttons):
+            button = joystick.get_button(i)
+            textPrint.printtext(screen, "Button {:>2} value: {}".format(i, button))
+        textPrint.unindent()
+
         ################ ----------------So begins my choppy code--------------------- ######################
         axis0 = joystick.get_axis(0) # Left knob, left (-1) and right (1)
         axis1 = joystick.get_axis(1) # Left knob, up (-1) and down (1)
         axis2 = joystick.get_axis(2) # Triggers, Left (1) Right (-1)
+        button_A = joystick.get_button(0)
+        button_B = joystick.get_button(1)
+        button_X = joystick.get_button(2)
+        button_Y = joystick.get_button(3)
 
         mode = 1
+
+        if button_X == 1:
+            button_B = 0
+            button_A = 0
+            button_Y = 0
+            mode = 0.7
+        elif button_Y == 1:
+            button_B = 0
+            button_A = 0
+            button_X = 0
+            mode = 1
+        elif button_A == 1:
+            button_B = 0
+            button_X = 0
+            button_Y = 0
+            mode = 0.1
+        elif button_B == 1:
+            button_X = 0
+            button_A = 0
+            button_Y = 0
+            mode = 0.3
+        else:
+            mode = 1
+
+
 
         # Stops turning section
         if -0.15 < axis0 < 0.15:
@@ -184,7 +226,7 @@ while done == False:
 
         else:
             #recommend adding on a limit multiplier/divider of axis 0 so we can expand or contract the max/min turn amount
-            message_send = command_encoder('18FF00F9', '05ff', axis0, mode)  # axis 0 updated -1 to 1 and changes the position. mode is the speed mode and can be updated by pressing the buttons
+            message_send = command_encoder(axis0, mode)  # axis 0 updated -1 to 1 and changes the position. mode is the speed mode and can be updated by pressing the buttons
             bus.send(message_send)
 
         # Turning right section

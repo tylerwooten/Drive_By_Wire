@@ -105,26 +105,26 @@ while done == False:
 
         ############### ADD IN SENDING CAN SIGNAL HERE
 
-        #### ADDING BUTTON FUNCTIONALITY
-        # buttons = joystick.get_numbuttons()
-        # textPrint.print(screen, "Number of buttons: {}".format(buttons))
-        # textPrint.indent()
-        #
-        # for i in range(buttons):
-        #     button = joystick.get_button(i)
-        #     textPrint.print(screen, "Button {:>2} value: {}".format(i, button))
-        # textPrint.unindent()
-        #
-        # # Hat switch. All or nothing for direction, not like joysticks.
-        # # Value comes back in an array.
-        # hats = joystick.get_numhats()
-        # textPrint.print(screen, "Number of hats: {}".format(hats))
-        # textPrint.indent()
-        #
-        # for i in range(hats):
-        #     hat = joystick.get_hat(i)
-        #     textPrint.print(screen, "Hat {} value: {}".format(i, str(hat)))
-        # textPrint.unindent()
+        ### ADDING BUTTON FUNCTIONALITY
+        buttons = joystick.get_numbuttons()
+        textPrint.print(screen, "Number of buttons: {}".format(buttons))
+        textPrint.indent()
+
+        for i in range(buttons):
+            button = joystick.get_button(i)
+            textPrint.print(screen, "Button {:>2} value: {}".format(i, button))
+        textPrint.unindent()
+
+        # Hat switch. All or nothing for direction, not like joysticks.
+        # Value comes back in an array.
+        hats = joystick.get_numhats()
+        textPrint.print(screen, "Number of hats: {}".format(hats))
+        textPrint.indent()
+
+        for i in range(hats):
+            hat = joystick.get_hat(i)
+            textPrint.print(screen, "Hat {} value: {}".format(i, str(hat)))
+        textPrint.unindent()
         #
         # textPrint.unindent()
 

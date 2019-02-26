@@ -64,15 +64,19 @@ def command_encoder(identifier, type, position, speed):
     holder_speed = [hex_speed[i:i+n] for i in range(0, len(hex_speed), n)]
     #print('check:', holder_speed)
 
-
-    identifier = [identifier, '#', type]
-
     command = holder_position[::-1] + holder_speed[::-1]
-    final_command = ''.join(command)
-    holder_command = [final_command[i:i + n] for i in range(0, len(final_command), n)]  #reformatted to data input for this script
-    #print(holder_command)
 
-    message_send = Message(arbitration_id= 419365113, data= holder_command)
+    test_command = ''.join(command)
+    holder_command = [test_command[i:i + n] for i in range(0, len(test_command), n)]
+
+    print(holder_command)
+
+    final_command =[]
+    for item in holder_command:
+        item = int(item, 16)
+        final_command.append(item)
+
+    message_send = Message(arbitration_id= 419365113, data = final_command)
     return message_send
 
 #-----------------------------------START XBOX CONTROLLER SECTION -----------------------------------------------#

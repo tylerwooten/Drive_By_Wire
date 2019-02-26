@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a014390e-af8a-4fdc-9e4d-bfa48d1cfcb2" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Steering_With_Xbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/Steering_With_Xbox.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/DriveByWire.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DriveByWire.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/command_encoder.py" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +35,13 @@
       <file leaf-file-name="Steering_With_Xbox.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Steering_With_Xbox.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="258">
               <caret line="74" column="31" selection-start-line="74" selection-end-line="75" />
+=======
+            <state relative-caret-position="240">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -37,11 +49,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file leaf-file-name="command_encoder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/command_encoder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="765">
               <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/command_encoder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -58,6 +78,11 @@
         <option value="$PROJECT_DIR$/Xbox.py" />
         <option value="$PROJECT_DIR$/Steering.py" />
         <option value="$PROJECT_DIR$/Steering_With_Xbox.py" />
+<<<<<<< Updated upstream
+=======
+        <option value="$PROJECT_DIR$/position_to_hex_converter.py" />
+        <option value="$PROJECT_DIR$/command_encoder.py" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -112,7 +137,11 @@
       </list>
     </option>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager">
+=======
+  <component name="RunManager" selected="Python.command_encoder">
+>>>>>>> Stashed changes
     <configuration name="Steering" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DriveByWire" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -131,9 +160,87 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+<<<<<<< Updated upstream
     </configuration>
     <recent_temporary>
       <list>
+=======
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Steering_With_Xbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DriveByWire" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Steering_With_Xbox.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="command_encoder" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DriveByWire" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/command_encoder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="position_to_hex_converter" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DriveByWire" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position_to_hex_converter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.command_encoder" />
+        <item itemvalue="Python.position_to_hex_converter" />
+        <item itemvalue="Python.Steering_With_Xbox" />
+>>>>>>> Stashed changes
         <item itemvalue="Python.Steering" />
       </list>
     </recent_temporary>
@@ -155,6 +262,15 @@
       <workItem from="1550256265311" duration="6240000" />
       <workItem from="1550508094069" duration="441000" />
       <workItem from="1550855917109" duration="1523000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1550957686135" duration="587000" />
+      <workItem from="1551112053671" duration="1430000" />
+      <workItem from="1551133266204" duration="261000" />
+      <workItem from="1551133717587" duration="336000" />
+      <workItem from="1551144651861" duration="308000" />
+      <workItem from="1551199218073" duration="357000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Clearing the test notes">
       <created>1550255379083</created>
@@ -188,6 +304,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="10710000" />
   </component>
   <component name="ToolWindowManager">
@@ -206,11 +323,39 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
+=======
+    <option name="totallyTimeSpent" value="13989000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1280" height="708" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30048466" />
+>>>>>>> Stashed changes
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+<<<<<<< Updated upstream
+=======
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32954547" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5024233" side_tool="true" weight="0.3262987" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49919224" weight="0.32792208" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919224" weight="0.32792208" />
+      <window_info active="true" anchor="bottom" id="File Transfer" order="13" sideWeight="0.49757674" visible="true" weight="0.3262987" />
+>>>>>>> Stashed changes
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -238,16 +383,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/position_to_hex_converter.py" />
     <entry file="file://$PROJECT_DIR$/Steering_With_Xbox.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="17">
           <caret line="1" column="10" lean-forward="true" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+=======
+        <state relative-caret-position="240">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/Steering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -339,6 +491,12 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/command_encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>

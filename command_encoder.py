@@ -44,5 +44,3 @@ def command_encoder(identifier, type, position, speed):
     final_command = ''.join(command)
     print(final_command)
 
-
-command_encoder('18FF00F9', '05ff', 0.29, 0.6)

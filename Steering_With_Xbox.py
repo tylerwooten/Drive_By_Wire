@@ -3,32 +3,20 @@ import can
 from can import Message
 import os
 
+# Set bitrate
 os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
 
+# Set bus
 bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
-
-#Define all messages to be sent
-#Left1 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 241, 0, 0])
-#Left2 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 243, 0, 0])
-#Left3 = Message(arbitration_id= 419365113, data=[3, 255, 255, 255, 255, 245, 0, 0])
-#Right1 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 1, 0, 0])
-#Right2 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 3, 0, 0])
-#Right3 = Message(arbitration_id= 419365113, data=[3, 0, 0, 0, 0, 5, 0, 0])
-StopAll = Message(arbitration_id= 419365113, data=[0, 0, 0, 0, 0, 0, 0, 0])
 
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 
-# This is a simple class that will help us print to the screen
-# It has nothing to do with the joysticks, just outputting the
-# information.
-
-#------------------------------- START COMMAND ENCODER FUNCTION ----------------------------------------#
-
+# ------------------------------ START COMMAND ENCODER FUNCTION --------------------------------------- #
 def command_encoder(position, speed):
-    # example command to run: command_encoder('18FF00F9', '05ff', 0.29, 0.6), 0.29 rev at 0.6 speed
+    # example command to run: command_encoder(0.29, 0.6), 0.29 rev at 0.6 speed
 
     # IQ20 conversion
     convert_position = float(position * 2 ** 20)
@@ -44,26 +32,19 @@ def command_encoder(position, speed):
         hex_position = str(hex_position)
         hex_position = hex_position[:2] + '0' + hex_position[2:]
 
-    #print('Position: ', hex_position)
-
     # Conversion of speed to hex
     hex_speed = hex((int(convert_speed) + (1 << speed_bits)) % (1 << speed_bits))
     while len(hex_speed) < 6:
         hex_speed = str(hex_speed)
         hex_speed = hex_speed[:2] + '0' + hex_speed[2:]
 
-    #print('Speed: ', hex_speed)
-
     n = 2
-
+    
     hex_position = (str(hex_position[2:]))
     holder_position = [hex_position[i:i + n] for i in range(0, len(hex_position), n)]
-    #print('check:', holder_position)
-
 
     hex_speed = (str(hex_speed[2:]))
     holder_speed = [hex_speed[i:i+n] for i in range(0, len(hex_speed), n)]
-    #print('check:', holder_speed)
 
     command = holder_position[::-1] + holder_speed[::-1]
 
@@ -72,7 +53,7 @@ def command_encoder(position, speed):
 
     print(holder_command)
 
-    final_command =[]
+    final_command = []
     for item in holder_command:
         item = int(item, 16)
         final_command.append(item)
@@ -80,17 +61,21 @@ def command_encoder(position, speed):
     temp_list = [5, 255]
     temp_list.extend(final_command)
 
+    # Create message_send and return it to function caller
     message_send = Message(arbitration_id=419365113, data=temp_list)
     return message_send
 
-#-----------------------------------START XBOX CONTROLLER SECTION -----------------------------------------------#
+# ----------------------------------START XBOX CONTROLLER SECTION ---------------------------------------------- #
 
 
-# Initializing pygame class "TextPrint"
+# Initializing pygame class "TextPrint".
+# This is a simple class that will help us print to the screen
+# It has nothing to do with the joysticks, just outputting the
+# information.
 class TextPrint:
     def __init__(self):
         self.reset()
-        self.font = pygame.font.Font(None, 20)
+        self.font = pygame.font.Font(None, 20)  # font description
 
     def printtext(self, screen, textString):
         textBitmap = self.font.render(textString, True, BLACK)
@@ -107,6 +92,7 @@ class TextPrint:
 
     def unindent(self):
         self.x -= 10
+
 
 pygame.init()
 

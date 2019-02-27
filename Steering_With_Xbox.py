@@ -3,7 +3,8 @@ import can
 from can import Message
 import os
 
-#os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
+os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
+
 bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
 
 #Define all messages to be sent
@@ -84,6 +85,8 @@ def command_encoder(position, speed):
 
 #-----------------------------------START XBOX CONTROLLER SECTION -----------------------------------------------#
 
+
+# Initializing pygame class "TextPrint"
 class TextPrint:
     def __init__(self):
         self.reset()
@@ -125,7 +128,7 @@ pygame.joystick.init()
 # Get ready to print
 textPrint = TextPrint()
 
-# -------- Main Program Loop -----------
+# -------- Main Program Loop ----------- #
 while done == False:
     # EVENT PROCESSING STEP
     for event in pygame.event.get():  # User did something
@@ -147,6 +150,7 @@ while done == False:
     # Get count of joysticks
     joystick_count = pygame.joystick.get_count()
 
+    # Draw number of joysticks
     textPrint.printtext(screen, "Number of joysticks: {}".format(joystick_count))
     textPrint.indent()
 
@@ -165,142 +169,80 @@ while done == False:
         # Usually axis run in pairs, up/down for one, and left/right for
         # the other.
         axes = joystick.get_numaxes()
-        textPrint.printtext(screen, "Number of axes: {}".format(axes))
+        textPrint.printtext(screen, "Number of axes: {}".format(axes))  # draw number of axes
         textPrint.indent()
 
+        # for each axis
         for i in range(axes):
             axis = joystick.get_axis(i)
-            textPrint.printtext(screen, "Axis {} value: {:>6.3f}".format(i, axis))
+            textPrint.printtext(screen, "Axis {} value: {:>6.3f}".format(i, axis))  # draw axis number and value
         textPrint.unindent()
 
-        # ----------- BUTTON SECTION ---------- #
+        # Buttons section
         buttons = joystick.get_numbuttons()
-        textPrint.printtext(screen, "Number of buttons: {}".format(buttons))
+        textPrint.printtext(screen, "Number of buttons: {}".format(buttons))  # draw number of buttons
         textPrint.indent()
 
         for i in range(buttons):
             button = joystick.get_button(i)
-            textPrint.printtext(screen, "Button {:>2} value: {}".format(i, button))
+            textPrint.printtext(screen, "Button {:>2} value: {}".format(i, button))  # draw button number and value
         textPrint.unindent()
 
-        ################ ----------------So begins my choppy code--------------------- ######################
-        axis0 = joystick.get_axis(0) # Left knob, left (-1) and right (1)
-        axis1 = joystick.get_axis(1) # Left knob, up (-1) and down (1)
-        axis2 = joystick.get_axis(2) # Triggers, Left (1) Right (-1)
-        button_A = joystick.get_button(0)
-        button_B = joystick.get_button(1)
-        button_X = joystick.get_button(2)
-        button_Y = joystick.get_button(3)
+        ################ ---------------- Joystick to Can Message --------------------- ######################
+        axis0 = joystick.get_axis(0)  # Left knob, left (-1) and right (1)
+        axis1 = joystick.get_axis(1)  # Left knob, up (-1) and down (1)
+        axis2 = joystick.get_axis(2)  # Triggers, Left (1) Right (-1)
+        button_A = joystick.get_button(0)  # A = button 0
+        button_B = joystick.get_button(1)  # B = button 1
+        button_X = joystick.get_button(2)  # X = button 2
+        button_Y = joystick.get_button(3)  # Y = button 3
 
-        mode = 1
+        speed = 1  # speed mode
 
-        if button_X == 1:
-            button_B = 0
-            button_A = 0
-            button_Y = 0
-            mode = 0.7
-        elif button_Y == 1:
-            button_B = 0
-            button_A = 0
-            button_X = 0
-            mode = 1
-        elif button_A == 1:
+        # if a button is held down, change the speed mode
+        if button_A == 1:
             button_B = 0
             button_X = 0
             button_Y = 0
-            mode = 0.1
+            speed = 0.1
+
         elif button_B == 1:
             button_X = 0
             button_A = 0
             button_Y = 0
-            mode = 0.3
+            speed = 0.3
+
+        elif button_X == 1:
+            button_B = 0
+            button_A = 0
+            button_Y = 0
+            speed = 0.7
+
+        elif button_Y == 1:
+            button_B = 0
+            button_A = 0
+            button_X = 0
+            speed = 1
+
         else:
-            mode = 1
+            speed = 1
 
+        #TODO: recommend adding on a limit multiplier/divider of axis 0 so we can expand or contract the max/min turn amount
 
+        multiplier = 1  # is used to alter the position to send. i.e. joystick full right with multiplier 5, position = 5 rev
+        position = axis0*multiplier  # axis0 max/min values = 1,-1 respectively. Units are revolutions
 
-        # Stops turning section
-        if -0.15 < axis0 < 0.15:
-            bus.send(StopAll)
-            print("not moving\n")
+        # Encoding the position and speed
+        message_send = command_encoder(position, speed)  # position coming from joystick movement, speed from button being pressed
+        # Sending the message to the motor
+        bus.send(message_send)
 
-        else:
-            #recommend adding on a limit multiplier/divider of axis 0 so we can expand or contract the max/min turn amount
-            message_send = command_encoder(axis0, mode)  # axis 0 updated -1 to 1 and changes the position. mode is the speed mode and can be updated by pressing the buttons
-            bus.send(message_send)
-
-        # Turning right section
-        # if 0.15 < axis0 < 0.3:
-        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 2)
-        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 19, 0])
-        #     bus.send(message_send)
-        #     print("Right 1\n")
-        #
-        # if 0.3 < axis0 < 0.6:
-        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 5)
-        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 80, 0])
-        #     bus.send(message_send)
-        #     print("Right 2\n")
-        #
-        # if 0.6 < axis0 <= 1.00:
-        #     #message_send = command_encoder('18FF00F9', '05ff', 0.5, 10)
-        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 4, 0, 0, 1])
-        #     bus.send(message_send)
-        #     print("Right 3\n")
-        #
-        # # Turning Left section
-        # if -0.15 > axis0 > -0.3:
-        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 2)
-        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 252, 255, 19, 0])
-        #     bus.send(message_send)
-        #     print("Left 1\n")
-        #
-        # if -0.3 > axis0 > -0.6:
-        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 5)
-        #     message_send = Message(arbitration_id=419365113, data=[5, 255, 0, 0, 252, 255, 80, 0])
-        #     bus.send(message_send)
-        #     print("Left 2\n")
-        #
-        # if -0.6 > axis0 >= -1.00:
-        #     #message_send = command_encoder('18FF00F9', '05ff', -0.5, 10)
-        #     message_send = Message(arbitration_id= 419365113, data=[5, 255, 0, 0, 252, 255, 0, 1])
-        #     bus.send(message_send)
-        #     print("Left 3\n")
-
-        ############### ADD IN SENDING CAN SIGNAL HERE
-
-        #### ADDING BUTTON FUNCTIONALITY
-        # buttons = joystick.get_numbuttons()
-        # textPrint.print(screen, "Number of buttons: {}".format(buttons))
-        # textPrint.indent()
-        #
-        # for i in range(buttons):
-        #     button = joystick.get_button(i)
-        #     textPrint.print(screen, "Button {:>2} value: {}".format(i, button))
-        # textPrint.unindent()
-        #
-        # # Hat switch. All or nothing for direction, not like joysticks.
-        # # Value comes back in an array.
-        # hats = joystick.get_numhats()
-        # textPrint.print(screen, "Number of hats: {}".format(hats))
-        # textPrint.indent()
-        #
-        # for i in range(hats):
-        #     hat = joystick.get_hat(i)
-        #     textPrint.print(screen, "Hat {} value: {}".format(i, str(hat)))
-        # textPrint.unindent()
-        #
-        # textPrint.unindent()
-
-    # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
-
-    # Go ahead and update the screen with what we've drawn.
+    # Update the screen with what we've drawn.
     pygame.display.flip()
 
-    # Limit to 20 frames per second
+    # Limit to 20 frames per second, motor internally limited to 1 ms send speed
     clock.tick(20)
 
 # Close the window and quit.
-# If you forget this line, the program will 'hang'
-# on exit if running from IDLE.
+# If you forget this line, the program will 'hang' on exit if running from IDLE.
 pygame.quit()

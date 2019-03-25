@@ -2,6 +2,7 @@ import pygame
 import can
 from can import Message
 import os
+import time
 
 # Set bitrate
 os.system('sudo /sbin/ip link set can0 up type can bitrate 250000')
@@ -214,13 +215,14 @@ while done == False:
         ################ ---------------- Joystick to Can Message --------------------- ######################
         axis0 = joystick.get_axis(0)  # Left knob, left (-1) and right (1)
         axis1 = joystick.get_axis(1)  # Left knob, up (-1) and down (1)
-        axis2 = joystick.get_axis(2)  # Triggers, Left (1) Right (-1)
+        axis2 = joystick.get_axis(2)  # Left Trigger, Left (1) Right (-1)
+        axis5 = joystick.get_axis(5)  # Right Trigger, Left (1) Right (-1)
         button_A = joystick.get_button(0)  # A = button 0
         button_B = joystick.get_button(1)  # B = button 1
         button_X = joystick.get_button(2)  # X = button 2
         button_Y = joystick.get_button(3)  # Y = button 3
 
-        actuator_position = 1.5*axis2 + 1.5
+        actuator_position = 1.5 * axis5 + 1.5
 
         speed = 1  # speed mode
 
@@ -264,13 +266,14 @@ while done == False:
 
         # Sending the message to the motor
         bus.send(message_send)
+        time.sleep(0.001)
         bus.send(message_send_actuator)
 
     # Update the screen with what we've drawn.
     pygame.display.flip()
 
     # Limit to 20 frames per second, motor internally limited to 1 ms send speed
-    clock.tick(20)
+    clock.tick(5)
 
 # Close the window and quit.
 # If you forget this line, the program will 'hang' on exit if running from IDLE.

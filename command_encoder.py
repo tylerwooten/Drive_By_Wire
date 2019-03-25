@@ -43,4 +43,3 @@ def command_encoder(identifier, type, position, speed):
     command = identifier + holder_position[::-1] + holder_speed[::-1]
     final_command = ''.join(command)
     print(final_command)
-

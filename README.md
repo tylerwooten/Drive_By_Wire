@@ -5,7 +5,7 @@ The Drive By Wire system developed by this Mechanical Engineering Senior Design 
 
 ## Getting Started
 
-The first step to getting started is to clone/download this project and open the file "XXXXXXXXXXXXXX.py" in your favorite IDE/Python environment. For the purposes of this project, this code was cloned to a raspberry pi 3B+ and ran there. 
+The first step to getting started is to clone/download this project and open the file "DriveByWireMainProgram.py" in your favorite IDE/Python environment. For the purposes of this project, this code was cloned to a raspberry pi 3B+ and ran there. 
 
 IQ 20 - 
 

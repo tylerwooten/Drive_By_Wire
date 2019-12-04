@@ -15,20 +15,8 @@ The following components were used for this project:
 
 1. Joystick/Controller - Plug in a USB joystick or controller to the raspberry pi. This team used a Logitech Joystick
 2. CAN shield - mounts onto the top of the raspberry pi and provides the CAN signaling LINK
-3. Steering Motor - (ensure this is the "autonomous ready" version -- see the steering motor documentation "XXXXXXXXX") LINK
-4. Actuator - Two actuators, one for accelerating and one for braking (see the actuator documentation "XXXXXXXXXX") LINK
-
-### Installing
-
-The following wiring diagram shows how to hook up the system:
-
-""""""""""""""" Insert Diagram """""""""""""
-
-
-
-Naming the actuators in CAN signal
-
-
+3. Steering Motor - (ensure this is the "autonomous ready" version -- see the steering motor documentation)
+4. Actuator - Two actuators, one for accelerating and one for braking (see the actuator documentation)
 
 
 ## Running The Script
@@ -53,7 +41,6 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 * **Addison Avila** - *Initial work* - 
 * **Parker Denning** - *Initial work* -
 * **Matthew Kress** - *Initial work* - 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
